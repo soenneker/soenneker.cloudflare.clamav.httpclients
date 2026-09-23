@@ -36,6 +36,7 @@ public sealed class CloudflareClamavOpenApiHttpClient : ICloudflareClamavOpenApi
             return new HttpClientOptions
             {
                 BaseAddress = new Uri(state.baseUrl),
+                AllowAutoRedirect = false,
                 DefaultRequestHeaders = new Dictionary<string, string>
                 {
                     {authHeaderName, authHeaderValue},
