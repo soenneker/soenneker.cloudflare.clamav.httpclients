@@ -28,7 +28,7 @@ public sealed class CloudflareClamavOpenApiHttpClient : ICloudflareClamavOpenApi
     {
         return _httpClientCache.Get(nameof(CloudflareClamavOpenApiHttpClient), (config: _config, baseUrl: _config["Scanner:BaseUrl"] ?? _prodBaseUrl), static state =>
         {
-            var apiKey = state.config.GetValueStrict<string>("Scanner:ApiKey");
+            var apiKey = state.config.GetStringStrict("Scanner:ApiKey");
             string authHeaderName = state.config["Scanner:AuthHeaderName"] ?? "Authorization";
             string authHeaderValueTemplate = state.config["Scanner:AuthHeaderValueTemplate"] ?? "Bearer {token}";
             string authHeaderValue = authHeaderValueTemplate.Replace("{token}", apiKey, StringComparison.Ordinal);
